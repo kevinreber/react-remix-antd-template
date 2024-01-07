@@ -1,4 +1,3 @@
-import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
 import {
   Links,
@@ -10,7 +9,16 @@ import {
 } from "@remix-run/react";
 
 export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  /*
+      Serve AntD styles via the "whole export" approach to be compatible with
+      SSR: https://ant.design/docs/react/server-side-rendering#whole-export
+      
+      Uses a Remix loader to generate and serve the entire AntD CSS file.
+      */
+  {
+    rel: "stylesheet",
+    href: "/antd.css",
+  },
 ];
 
 export default function App() {

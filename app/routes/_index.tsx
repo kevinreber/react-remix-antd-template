@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { Button, Space } from "antd";
 
 export const meta: MetaFunction = () => {
   return [
@@ -36,6 +37,12 @@ export default function Index() {
           </a>
         </li>
       </ul>
+      <Space>
+        <Button type="primary">test button</Button>
+        <Button type="primary" ghost>
+          test2 button
+        </Button>
+      </Space>
     </div>
   );
 }
